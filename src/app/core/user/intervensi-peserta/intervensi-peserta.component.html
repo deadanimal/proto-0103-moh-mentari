@@ -1,0 +1,280 @@
+<div class="header pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-6 col-7">
+                    <h6 class="h2 text-dark d-inline-block mb-0">Peserta Intervensi</h6>
+
+                    <nav aria-label="breadcrumb" class=" d-none d-md-inline-block ml-md-4">
+                        <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                            <li class=" breadcrumb-item">
+                                <a href="javascript:void(0)"> <i class="fas fa-chart-bar text-dark"> </i> </a>
+                            </li>
+                            
+                        </ol>
+                    </nav>
+                </div>
+                <div class="col-lg-6 col-5 text-right">
+                <a class="btn btn-sm btn-neutral" (click)="openModal(createUser)">
+                  Tambah Penyertaan
+                </a>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid mt--6">
+  <div class="row">
+      <div class="col-xl-8">
+          <div class="card">
+              <div class="card-header bg-secondary">
+                  <h3 class="m-0">Jumlah Perserta Mengikut Program</h3>
+              </div>
+              <div class="card-body">
+                  <div class="chart">
+                      <div class="amchart" id="chartdivqweqwe"></div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="col-xl-4">
+          <div class="card">
+              <div class="card-header bg-secondary">
+                  <h3 class="m-0">Jumlah Peserta Terlibat</h3>
+              </div>
+              <div class="card-body">
+                  <div class="chart">
+                      <div class="amchart" id="chartdivqweqwe1"></div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+          <div class="card-header bg-secondary">
+              <h3 class="m-0">Senarai Peserta</h3>
+          </div>
+          <div class="class-body">
+          
+
+          </div>
+          <div class=" table-responsive">
+              <table class=" table align-items-center table-flush">
+                  <thead class=" thead-light">
+                      <tr>
+                          <th class=" sort" data-sort="name" scope="col">No.</th>
+
+                          <th class=" sort" data-sort="budget" scope="col">Nama</th>
+
+                          <th class=" sort" data-sort="status" scope="col">Jantina</th>
+
+                          <th scope="col">Umur</th>
+
+                          <th scope="col">Aktiviti</th>
+
+                          <th scope="col"></th>
+
+                      </tr>
+                  </thead>
+
+
+                  <tbody>
+                      <tr>
+                          <th>1</th>
+                          <td>Mohd Hazwan bin Ali</td>
+                          <td>Lelaki</td>
+                          <td>43 Tahun</td>
+                          <td>Sokongan Pekerjaan</td>
+                          <td>
+                              <button class="btn btn-sm btn-primary" (click)="openModal(createUser)">View</button>
+                          </td>
+                      </tr>
+                      <tr>
+                          <th>2</th>
+                          <td>Mohd Ariff Shauqi bin Latiff</td>
+                          <td>Lelaki</td>
+                          <td>35 Tahun</td>
+                          <td>Illness Management</td>
+                          <td>
+                              <button class="btn btn-sm btn-primary" (click)="openModal(createUser)">View</button>
+                          </td>
+                      </tr>
+                      <tr>
+                          <th>3</th>
+                          <td>Nur Ruqaiyah binti Shamsuddin</td>
+                          <td>Perempuan</td>
+                          <td>28 Tahun</td>
+                          <td>Kesihatan Mental</td>
+                          <td>
+                              <button class="btn btn-sm btn-primary" (click)="openModal(createUser)">View</button>
+                          </td>
+
+                      </tr>
+                      <tr>
+                          <th>4</th>
+                          <td>Lau Jing Xi</td>
+                          <td>Perempuan</td>
+                          <td>33 Tahun</td>
+                          <td>Sokongan Pekerjaan</td>
+                          <td>
+                              <button class="btn btn-sm btn-primary" (click)="openModal(createUser)">View</button>
+                          </td>
+
+                      </tr>
+                      <tr>
+                          <th>5</th>
+                          <td>Lim Ah Loi</td>
+                          <td>Lelaki</td>
+                          <td>46 Tahun</td>
+                          <td>Social Enterprise</td>
+                          <td>
+                              <button class="btn btn-sm btn-primary" (click)="openModal(createUser)">View</button>
+                          </td>
+
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+          <!--
+          <div class="card-body">
+              <div class="row">
+                  <div class="col-md-12 col-lg-5">
+                      <div class="form-group">
+                          <label class="form-control-label">Report type</label>
+                          <select class="form-control custom-select">
+                              <option hidden selected>Please pick</option>
+                              <option>Report 1</option>
+                              <option>Report 2</option>
+                              <option>Report 3</option>
+                              <option>Report 4</option>
+                          </select>
+                      </div>
+                  </div>
+                  <div class="col-md-12 col-lg-5">
+                      <div class="form-group">
+                          <label class="form-control-label">Date range</label>
+                          <div class="input-group">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                              </div>
+                              <input 
+                                  type="text"
+                                  class="form-control"
+                                  bsDaterangepicker
+                                  [bsConfig]="bsDPConfig"
+                                  placeholder="Date range"
+                                  name="bsDaterangepicker"
+                              >
+                            </div>
+                      </div>
+                  </div>
+                  <div class="col-md-12 col-lg-2 d-flex align-items-center">
+                      <button class="btn btn-default" type="button">Search</button>
+                  </div>
+                  
+              </div>
+          </div>
+          -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #createUser>
+    <div class="modal-header bg-default">
+        <h6 class="modal-title text-white my-auto" id="modal-title-default">
+            Borang Penyertaan
+        </h6>
+
+        <button
+            aria-label="Close"
+            class="close"
+            data-dismiss="modal"
+            type="button"
+            (click)="closeModal()"
+        >
+            <span aria-hidden="true" class="text-white my-auto"> × </span>
+        </button>
+    </div>
+
+
+
+
+
+    <div class="modal-body">
+        <form [formGroup]="registerForm">
+            <div class="form-group">
+                <label class="form-control-label">Nama</label>
+                <input 
+                  class="form-control"
+                  placeholder="Sila masukkan nama"
+                  formControlName="name"
+                  type="text"
+                >
+                <ng-container *ngFor="let message of registerFormMessages.name">
+                    <div *ngIf="registerForm.get('name').hasError(message.type) && (registerForm.get('name').dirty || registerForm.get('name').touched)">
+                        <p class="error-message"><span>{{ message.message }}</span></p>
+                    </div>
+                </ng-container>
+    
+            </div>
+            <div class="form-group">
+                <label class="form-control-label">Umur</label>
+                <input 
+                  class="form-control"
+                  placeholder="Sila masukkan umur"
+                  formControlName="name"
+                  type="text"
+                >
+            </div>
+            <div class="form-group">
+                <label class="form-control-label">Jantina</label>
+                <select class="custom-select form-control">
+                <option selected>Sila Pilih Jantina</option>
+                <option>Perempuan</option>
+                <option>Lelaki</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-control-label">Program</label>
+                <select class="custom-select form-control">
+                <option selected>Sila Pilih Program</option>
+                <option>Sokongan Pekerjaan</option>
+                <option>Day Care</option>
+                <option>Illness Management</option>
+                <option>Kesihatan Mental Masyarakat</option>
+                <option>Social Enterprise</option>
+                </select>
+            </div>
+        </form>
+        
+    </div>
+
+    <div class="modal-footer">
+        <button 
+            class="btn btn-success"
+            type="button"
+            (click)="confirm()"
+            [disabled]="!registerForm.valid"
+        >
+            Buat
+        </button>
+
+        <button
+            class="btn btn-outline-danger ml-auto"
+            data-dismiss="modal"
+            type="button"
+            (click)="closeModal()"
+        >
+            Tutup
+        </button>
+    </div>
+</ng-template>
+
+
+

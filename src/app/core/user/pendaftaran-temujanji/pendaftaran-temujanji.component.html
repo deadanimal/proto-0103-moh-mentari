@@ -1,0 +1,208 @@
+<div class="header pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-6 col-7">
+                    <h6 class="h2 text-dark d-inline-block mb-0">Temujanji</h6>
+
+                    <nav aria-label="breadcrumb" class=" d-none d-md-inline-block ml-md-4">
+                        <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                            <li class=" breadcrumb-item">
+                                <a href="javascript:void(0)"> <i class="fas fa-chart-bar text-dark"> </i> </a>
+                            </li>
+                            
+                        </ol>
+                    </nav>
+                </div>
+                <div class="col-lg-6 col-5 text-right">
+					<a class="btn btn-sm btn-neutral" (click)="openModal(createUser)">
+						Tempah Temujanji
+					</a>
+				</div>
+            </div>
+            
+        </div>
+        <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header bg-secondary">
+                    <h3 class="m-0">Senarai Temujanji</h3>
+                </div>
+                
+                <div class="class-body">
+                
+
+                </div>
+    
+    <div class="card">
+      <div class=" table-responsive">
+        <table class=" table align-items-center table-flush">
+          <thead class=" thead-light">
+            <tr>
+              <th class=" sort" data-sort="name" scope="col">MRN Number</th>
+
+              <th class=" sort" data-sort="budget" scope="col">Nama</th>
+
+              <th class=" sort" data-sort="status" scope="col">NRIC</th>
+
+              <th scope="col">Tarikh Lahir</th>
+
+              <th scope="col">Umur</th>
+
+              <th scope="col">Jantina</th>
+
+              <th scope="col">Status</th>
+
+              <th scope="col"></th>
+
+            </tr>
+          </thead>
+
+
+          <tbody>
+            <tr *ngFor="let patient of patients">
+              <th scope="row">{{patient.mrn_number}}</th>
+              <td>{{patient.name}}</td>
+              <td>{{patient.nric}}</td>
+              <td>{{patient.date_of_birth}}</td>
+              <td>{{patient.age}}</td>
+              <td>{{patient.gender}}</td>
+              <td>{{patient.status}}</td>
+              <td>
+                <button class="btn btn-danger btn-sm btn-primary" (click)="viewData(patient)">Batal</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+    </div>
+</div>
+
+<div class=" container-fluid mt--4 ">
+    
+</div>
+
+<ng-template #createUser>
+    <div class="modal-header bg-default">
+        <h6 class="modal-title text-white my-auto" id="modal-title-default">
+            Tempah Temujanji
+        </h6>
+
+        <button
+            aria-label="Close"
+            class="close"
+            data-dismiss="modal"
+            type="button"
+            (click)="closeModal()"
+        >
+            <span aria-hidden="true" class="text-white my-auto"> × </span>
+        </button>
+    </div>
+
+
+
+
+
+    <div class="modal-body">
+        <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label class="form-control-label">
+                                    Nama
+                                </label>
+                                <input class="form-control" placeholder="Mohammad Salim Bin Hasan" type="text" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label class="form-control-label">
+                                    Jantina
+                                </label>
+                                <select class="custom-select form-control">
+                                    <option selected>Pilih Jantina</option>
+                                    <option>Lelaki</option>
+                                    <option>Perempuan</option>
+                                </select>
+
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="example-datetime-local-input" class="form-control-label">Tarikh/Masa</label>
+                                <input class="form-control" type="datetime-local" value="2018-11-23T10:30:00"
+                                    id="example-datetime-local-input">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                          <label class="form-control-label">
+                                    Surat Rujukan
+                                </label>
+                            <div class=" custom-file">
+                              <input
+                                class=" custom-file-input"
+                                id="customFileLang"
+                                lang="en"
+                                type="file"/>
+                               <label class=" custom-file-label" for="customFileLang">
+                                  Muat naik fail
+                                </label>
+                           </div>
+                        </div>
+                    </div>
+                    <br>
+                    
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label class="form-control-label">
+                                    Nama Dr
+                                </label>
+                                <select class="custom-select form-control">
+                                    <option selected>Sila Pilih Dr Pilihan</option>
+                                    <option>Dr Amalina</option>
+                                    <option>Dr Lee</option>
+                                    <option>Dr azhar</option>
+                                    <option>Dr Kumar</option>
+                                </select>
+
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                </div>
+        
+    </div>
+
+    <div class="modal-footer">
+        <button 
+            class="btn btn-success"
+            type="button"
+            (click)="confirm()"
+            [disabled]="!registerForm.valid"
+        >
+            Tempah
+        </button>
+
+        <button
+            class="btn btn-outline-danger ml-auto"
+            data-dismiss="modal"
+            type="button"
+            (click)="closeModal()"
+        >
+            Tutup
+        </button>
+    </div>
+</ng-template>
