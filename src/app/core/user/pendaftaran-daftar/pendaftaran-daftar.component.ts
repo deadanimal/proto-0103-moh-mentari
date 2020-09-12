@@ -46,7 +46,7 @@ export class PendaftaranDaftarComponent implements OnInit {
           showCancelButton: true,
           buttonsStyling: false,
           confirmButtonClass: 'btn btn-danger',
-          confirmButtonText: 'Yes',
+          confirmButtonText: 'Delete',
           cancelButtonClass: 'btn btn-secondary'
       }).then((result) => {
           if (result.value) {

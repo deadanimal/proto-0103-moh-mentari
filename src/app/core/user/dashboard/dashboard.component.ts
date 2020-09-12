@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   private chart1: any
   private chart2: any
   clicked: any = true
-   clicked1: any = false
+  clicked1: any = false
 
   constructor(
     private zone: NgZone

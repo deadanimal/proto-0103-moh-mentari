@@ -23,11 +23,12 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 export class IntervensiAktivitiComponent implements OnInit {
 
    // Chart
-  private chart: any
+ 
   private chart1: any
-  private chart2: any
+ 
   private chart3: any
   private chart5: any
+  private chart6: any
   private dataChart: any[] = []
   private dataChart2: any[] = []
   private dataChart3: any[] = []
@@ -80,20 +81,20 @@ export class IntervensiAktivitiComponent implements OnInit {
 
   ngOnDestroy() {
     this.zone.runOutsideAngular(() => {
-      if (this.chart) {
-        this.chart.dispose()
-      }
+
       if (this.chart1) {
         this.chart1.dispose()
       }
-      if (this.chart2) {
-        this.chart2.dispose()
-      }
+
+      
       if (this.chart3) {
         this.chart3.dispose()
       }
       if (this.chart5){
         this.chart5.dispose()
+      }
+      if (this.chart6){
+        this.chart6.dispose()
       }
     })
   }
@@ -140,47 +141,15 @@ export class IntervensiAktivitiComponent implements OnInit {
 
   getCharts() {
     this.zone.runOutsideAngular(() => {
-      this.getChart()
+  
       this.getChart1()
-      this.getChart2()
+
       this.getChart3()
       this.getChart5()
+      this.getChart6()
     })
   }
 
-  getChart() {
-    let chart = am4core.create("chartdiv", am4charts.XYChart);
-    chart.paddingRight = 20;
-
-    let data = this.dataChart
-
-    chart.data = data;
-    chart.dateFormatter.inputDateFormat = "yyyy";
-
-    let dateAxis = chart.xAxes.push(new am4charts.DateAxis());
-    dateAxis.renderer.minGridDistance = 50;
-    dateAxis.baseInterval = { timeUnit: "year", count: 2 };
-
-    let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-    valueAxis.tooltip.disabled = true;
-
-    let series = chart.series.push(new am4charts.StepLineSeries());
-    series.dataFields.dateX = "year";
-    series.dataFields.valueY = "amount";
-    series.tooltipText = "{valueY.amount}";
-    series.strokeWidth = 3;
-
-    chart.cursor = new am4charts.XYCursor();
-    chart.cursor.xAxis = dateAxis;
-    chart.cursor.fullWidthLineX = true;
-    chart.cursor.lineX.strokeWidth = 0;
-    chart.cursor.lineX.fill = chart.colors.getIndex(2);
-    chart.cursor.lineX.fillOpacity = 0.1;
-
-    chart.scrollbarX = new am4core.Scrollbar();
-
-    this.chart = chart
-  }
 
   getChart1() {
     let chart = am4core.create("chartdiv1", am4charts.XYChart);
@@ -228,89 +197,7 @@ export class IntervensiAktivitiComponent implements OnInit {
     this.chart1 = chart
   }
 
-  getChart2() {
-    let chart = am4core.create("chartdiv2", am4charts.XYChart);
-
-    // Add data
-    chart.data = this.dataChart2
-
-    // Create axes
-    let valueAxisX = chart.xAxes.push(new am4charts.ValueAxis());
-    valueAxisX.title.text = 'X Axis';
-    valueAxisX.renderer.minGridDistance = 40;
-
-    // Create value axis
-    let valueAxisY = chart.yAxes.push(new am4charts.ValueAxis());
-    valueAxisY.title.text = 'Y Axis';
-
-    // Create series
-    let lineSeries = chart.series.push(new am4charts.LineSeries());
-    lineSeries.dataFields.valueY = "ay";
-    lineSeries.dataFields.valueX = "ax";
-    lineSeries.strokeOpacity = 0;
-
-    let lineSeries2 = chart.series.push(new am4charts.LineSeries());
-    lineSeries2.dataFields.valueY = "by";
-    lineSeries2.dataFields.valueX = "bx";
-    lineSeries2.strokeOpacity = 0;
-
-    // Add a bullet
-    let bullet = lineSeries.bullets.push(new am4charts.Bullet());
-
-    // Add a triangle to act as am arrow
-    let arrow = bullet.createChild(am4core.Triangle);
-    arrow.horizontalCenter = "middle";
-    arrow.verticalCenter = "middle";
-    arrow.strokeWidth = 0;
-    arrow.fill = chart.colors.getIndex(0);
-    arrow.direction = "top";
-    arrow.width = 12;
-    arrow.height = 12;
-
-    // Add a bullet
-    let bullet2 = lineSeries2.bullets.push(new am4charts.Bullet());
-
-    // Add a triangle to act as am arrow
-    let arrow2 = bullet2.createChild(am4core.Triangle);
-    arrow2.horizontalCenter = "middle";
-    arrow2.verticalCenter = "middle";
-    arrow2.rotation = 180;
-    arrow2.strokeWidth = 0;
-    arrow2.fill = chart.colors.getIndex(3);
-    arrow2.direction = "top";
-    arrow2.width = 12;
-    arrow2.height = 12;
-
-    //add the trendlines
-    let trend = chart.series.push(new am4charts.LineSeries());
-    trend.dataFields.valueY = "value2";
-    trend.dataFields.valueX = "value";
-    trend.strokeWidth = 2
-    trend.stroke = chart.colors.getIndex(0);
-    trend.strokeOpacity = 0.7;
-    trend.data = [
-      { "value": 1, "value2": 2 },
-      { "value": 12, "value2": 11 }
-    ];
-
-    let trend2 = chart.series.push(new am4charts.LineSeries());
-    trend2.dataFields.valueY = "value2";
-    trend2.dataFields.valueX = "value";
-    trend2.strokeWidth = 2
-    trend2.stroke = chart.colors.getIndex(3);
-    trend2.strokeOpacity = 0.7;
-    trend2.data = [
-      { "value": 1, "value2": 1 },
-      { "value": 12, "value2": 19 }
-    ];
-
-    //scrollbars
-    chart.scrollbarX = new am4core.Scrollbar();
-    chart.scrollbarY = new am4core.Scrollbar();
-
-    this.chart2 = chart
-  }
-
+ 
   getChart3() {
     let chart = am4core.create("chartdiv3", am4charts.XYChart);
 
@@ -423,6 +310,153 @@ export class IntervensiAktivitiComponent implements OnInit {
     
     this.chart5 =chart
 
+  }
+
+  getChart6(){
+    let chart = am4core.create('tahunan', am4charts.XYChart)
+    chart.colors.step = 2;
+
+    chart.legend = new am4charts.Legend()
+    chart.legend.position = 'top'
+    chart.legend.paddingBottom = 20
+    chart.legend.labels.template.maxWidth = 95
+
+    let xAxis = chart.xAxes.push(new am4charts.CategoryAxis())
+    xAxis.dataFields.category = 'category'
+    xAxis.renderer.cellStartLocation = 0.1
+    xAxis.renderer.cellEndLocation = 0.9
+    xAxis.renderer.grid.template.location = 0;
+
+  let yAxis = chart.yAxes.push(new am4charts.ValueAxis());
+  yAxis.min = 0;
+
+  function createSeries(value, name) {
+      let series = chart.series.push(new am4charts.ColumnSeries())
+      series.dataFields.valueY = value
+      series.dataFields.categoryX = 'category'
+      series.name = name
+
+      series.events.on("hidden", arrangeColumns);
+      series.events.on("shown", arrangeColumns);
+
+      let bullet = series.bullets.push(new am4charts.LabelBullet())
+      bullet.interactionsEnabled = false
+      bullet.dy = 30;
+      bullet.label.text = '{valueY}'
+      bullet.label.fill = am4core.color('#ffffff')
+
+      return series;
+  }
+
+    chart.data = [
+        {
+            category: 'Jan',
+            second: 40,
+            
+        },
+        {
+            category: 'Feb',
+            second: 12,
+          
+        },
+        {
+            category: 'Mac',
+            second: 84,
+            
+        },
+        {
+            category: 'April',
+
+            second: 33,
+            
+        },
+        {
+          category: 'Jun',
+
+          second: 40,
+          
+      },
+      {
+        category: 'Jun',
+
+        second: 40,
+        
+    },
+    {
+      category: 'Jul',
+
+      second: 40,
+      
+    },
+    {
+    category: 'Ogos',
+
+    second: 40,   
+    },
+    {
+      category: 'Sept',
+
+      second: 50,
+     },
+     {
+      category: 'Okt',
+
+      second: 10, 
+    },
+    {
+      category: 'Nov',
+
+      second: 40,
+      
+    },
+    {
+      category: 'Dis',
+
+      second: 20,  
+     }
+    ]
+
+      createSeries('second', 'Bil. Program');
+      
+      
+      function arrangeColumns() {
+      
+          let series = chart.series.getIndex(0);
+      
+          let w = 1 - xAxis.renderer.cellStartLocation - (1 - xAxis.renderer.cellEndLocation);
+          if (series.dataItems.length > 1) {
+              let x0 = xAxis.getX(series.dataItems.getIndex(0), "categoryX");
+              let x1 = xAxis.getX(series.dataItems.getIndex(1), "categoryX");
+              let delta = ((x1 - x0) / chart.series.length) * w;
+              if (am4core.isNumber(delta)) {
+                  let middle = chart.series.length / 2;
+      
+                  let newIndex = 0;
+                  chart.series.each(function(series) {
+                      if (!series.isHidden && !series.isHiding) {
+                          series.dummyData = newIndex;
+                          newIndex++;
+                      }
+                      else {
+                          series.dummyData = chart.series.indexOf(series);
+                      }
+                  })
+                  let visibleCount = newIndex;
+                  let newMiddle = visibleCount / 2;
+      
+                  chart.series.each(function(series) {
+                      let trueIndex = chart.series.indexOf(series);
+                      let newIndex = series.dummyData;
+      
+                      let dx = (newIndex - trueIndex + middle - newMiddle) * delta
+      
+                      series.animate({ property: "dx", to: dx }, series.interpolationDuration, series.interpolationEasing);
+                      series.bulletsContainer.animate({ property: "dx", to: dx }, series.interpolationDuration, series.interpolationEasing);
+                  })
+              }
+          }
+      }
+      
   }
 
 

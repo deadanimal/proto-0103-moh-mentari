@@ -35,7 +35,7 @@
               </div>
               <div class="card-body">
                   <div class="chart">
-                      <div class="amchart" id="chartdiv"></div>
+                      <div class="amchart" id="pie"></div>
                   </div>
               </div>
           </div>
@@ -47,7 +47,7 @@
               </div>
               <div class="card-body">
                   <div class="chart">
-                      <div class="amchart" id="chartdiv1"></div>
+                      <div class="amchart" id="tahunan"></div>
                   </div>
               </div>
           </div>
@@ -61,7 +61,7 @@
                 </div>
                 <div class="card-body">
                     <div class="chart">
-                        <div class="amchart" id="chartdiv2"></div>
+                        <div class="amchart" id="chartdiv1"></div>
                     </div>
                 </div>
             </div>
@@ -79,6 +79,34 @@
             </div>
         </div>
     </div>
+    <!--
+    <div class="row">
+        <div class="col-md-12 col-lg-6">
+            <div class="card">
+                <div class="card-header bg-secondary">
+                    <h3 class="m-0">Hari vs Program</h3>
+                </div>
+                <div class="card-body">
+                    <div class="chart">
+                        <div class="amchart" id="chartdiv"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 col-lg-6">
+            <div class="card">
+                <div class="card-header bg-secondary">
+                    <h3 class="m-0">Aktiviti vs Penglibatan</h3>
+                </div>
+                <div class="card-body">
+                    <div class="chart">
+                        <div class="amchart" id="chartdiv2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    -->
 </div>
 
 
@@ -109,7 +137,7 @@
     <div class="modal-body">
         <form [formGroup]="registerForm">
             <div class="form-group">
-                <label class="form-control-label">Tajuk</label>
+                <label class="form-control-label">Nama Program</label>
                 <input 
                   class="form-control"
                   placeholder="Sila masukkan tajuk"
@@ -123,22 +151,25 @@
                 </ng-container>
     
             </div>
-            <!--
-            <div class="form-group">
-                <label class="form-control-label">Email</label>
-                <input 
-                  class="form-control"
-                  placeholder="Enter email"
-                  formControlName="email"
-                  type="text"
-                >
-                <ng-container *ngFor="let message of registerFormMessages.email">
-                    <div *ngIf="registerForm.get('email').hasError(message.type) && (registerForm.get('email').dirty || registerForm.get('email').touched)">
-                        <p class="error-message"><span>{{ message.message }}</span></p>
+
+            <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label class="form-control-label">
+                                    Jenis Program
+                                </label>
+                                <select class="custom-select form-control">
+                                    <option selected>Sila Pilih</option>
+                                    <option>Program Sokongan Pekerjaan</option>
+                                    <option>Program Social Enterprise</option>
+                                    <option>Program Kesihatan Mental Masyarakat</option>
+                                    <option>Program Day Care</option>
+                                    <option>Program Illness Management</option>
+                                </select>
+
+                            </div>
+                        </div>
                     </div>
-                </ng-container>
-            </div>
-            -->
             
         </form>
         
@@ -151,7 +182,7 @@
             (click)="confirm()"
             [disabled]="!registerForm.valid"
         >
-            Buat
+            Tambah
         </button>
 
         <button
